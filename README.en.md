@@ -34,7 +34,7 @@ gacha-planner/
 
 1. **Collect inputs**: current resources and pity/guarantee state, future income, goal list (hard / flexible / optional), account status, plus special goals such as free picks and full collection.
 2. **Verify game info**: banner timeline and source credibility tiers; fixed rules come from references.
-3. **Build resource timeline**: rolling calculation at each banner closure; linear income assumption.
+3. **Build resource timeline**: rolling calculation at each banner closure; income split by half-patch, linear within each half.
 4. **Probability and risk analysis**: single/multi-target cost, dual perspectives, Captured Radiance, multiple copies, weapon pre-filtering.
 5. **Generate and compare plans**: enumerate strategies, compare on a unified basis, trigger top-up when resources fall short.
 6. **Output decisions**: priority ranking, actionable checklist, and conditional trigger rules.
