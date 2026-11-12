@@ -1,58 +1,58 @@
 # gacha-planner
 
-[English](README.en.md) | 简体中文
+[简体中文](README.zh-CN.md) | English
 
-抽卡类游戏（米哈游系限定角色池 / 武器池）的资源规划与抽取决策方法论 agent skill。在有限抽数下，给出可执行、可复核的抽取策略，使目标达成概率与账号整体收益最大化。
+An agent skill for resource planning and pull decisions in gacha games (miHoYo limited character and weapon banners). It provides executable, verifiable pull strategies under limited resources, maximizing goal-completion probability and overall account value.
 
-## 特性
+## Features
 
-- **完整决策流程**：收集输入 → 核实信息 → 建立资源时间线 → 概率与风险分析 → 多方案对比 → 输出可执行决策。
-- **精确概率建模**：解析法与蒙特卡洛并行，覆盖软保底、大小保底、同池多金，以及原神「捕获明光」等带状态机制。
-- **双口径决策**：硬保底给安全边界，统计口径（期望、P50/P90/P95）给实际预期。
-- **非抽卡获取**：常驻砺行修远、周年庆常驻 / 限定五星自选的决策规则。
-- **武器存量与替代**：武器匹配度分析、免费替代优先、有限武器在角色间的分配。
-- **全收集可行性**：长期收支速率平衡，测算每版本缺口与累计缺口。
-- **复刻等待量化**：基于历史复刻节奏估算首次 / 二次 / 三次复刻与集录祈愿窗口。
-- **氪金补缺口**：按单位抽成本从低到高组合氪金手段。
-- **偏差再规划**：实际抽卡结果（歪 / 没歪）落地后，基于最新状态重新规划。
+- **Complete decision pipeline**: collect inputs → verify game info → build resource timeline → probability and risk analysis → compare plans → output actionable decisions.
+- **Accurate probability modeling**: analytical and Monte Carlo methods covering soft pity, the guaranteed-pity system, multiple copies in one banner, and the stateful "Captured Radiance" mechanism in Genshin Impact.
+- **Dual-perspective decisions**: hard pity gives the safety boundary; the statistical perspective (expected value, P50/P90/P95) gives the realistic outlook.
+- **Non-pull acquisition**: decision rules for the persistent cultivation system and anniversary standard / limited five-star picks.
+- **Weapon inventory and substitutes**: weapon-character fit analysis, free substitutes first, and allocation of limited weapons across characters.
+- **Full-collection feasibility**: long-term income-vs-cost balance, per-patch and cumulative gaps.
+- **Rerun wait quantification**: estimate first / second / third reruns and Chronicle Wish windows from historical rerun cadence.
+- **Top-up gap filling**: combine top-up options by cost-per-pull from low to high.
+- **Re-planning on deviation**: re-plan from the latest state after actual pull outcomes (lost or won the 50/50).
 
-## 目录结构
+## Structure
 
 ```
 gacha-planner/
-├── SKILL.md                      # 主方法论与工作流程
+├── SKILL.md                      # Core methodology and workflow
 ├── references/
-│   ├── gacha-mechanics.md        # 卡池固定概率、保底、期望与信息渠道
-│   ├── patch-income.md           # 版本资源产出与全收集长期收支
-│   ├── acquisition-methods.md    # 免费自选决策与复刻等待
-│   └── weapon-allocation.md      # 武器匹配、替代与分配
+│   ├── gacha-mechanics.md        # Fixed banner probabilities, pity, expectations, sources
+│   ├── patch-income.md           # Per-patch income and full-collection long-term balance
+│   ├── acquisition-methods.md    # Free pick decisions and rerun waiting
+│   └── weapon-allocation.md      # Weapon fit, substitutes, allocation
 └── scripts/
-    └── pull_probability.py       # 概率计算、蒙特卡洛、氪金与全收集缺口
+    └── pull_probability.py       # Probability, Monte Carlo, top-up, collection gap
 ```
 
-## 工作流程
+## Workflow
 
-1. **收集用户输入**：现有资源与垫抽 / 保底状态、未来资源、目标清单（硬需求 / 弹性 / 可选）、账号现状，以及免费自选与全收集等特殊目标。
-2. **核实游戏信息**：卡池时间线、信息可信度分级，固定规则查 references。
-3. **建立资源时间线**：以每个卡池关闭时点为节点滚动核算，资源流入按上下半分段、段内线性假设。
-4. **概率与风险分析**：单 / 多目标成本、双口径、捕获明光、同池多金、武器前置过滤。
-5. **生成并对比方案**：枚举策略组合，统一口径对比，资源不足时触发氪金补缺口。
-6. **输出决策**：优先级排序、可执行行动清单与条件触发规则。
+1. **Collect inputs**: current resources and pity/guarantee state, future income, goal list (hard / flexible / optional), account status, plus special goals such as free picks and full collection.
+2. **Verify game info**: banner timeline and source credibility tiers; fixed rules come from references.
+3. **Build resource timeline**: rolling calculation at each banner closure; income split by half-patch, linear within each half.
+4. **Probability and risk analysis**: single/multi-target cost, dual perspectives, Captured Radiance, multiple copies, weapon pre-filtering.
+5. **Generate and compare plans**: enumerate strategies, compare on a unified basis, trigger top-up when resources fall short.
+6. **Output decisions**: priority ranking, actionable checklist, and conditional trigger rules.
 
-## 核心决策原则
+## Core Principles
 
-- 硬需求优先，弹性需求只在余额里安排。
-- 不可替代性定价值，填补体系空白者价值更高。
-- 时点优先于总量，双口径决策不混用。
-- 不提前下注爆料，确定收益优先。
-- 角色池与武器池保底独立、分别建账。
+- Hard needs first; flexible goals only from the remainder.
+- Value by irreplaceability; filling a team gap is worth more.
+- Timing over totals; keep the two perspectives separate.
+- Don't bet early on leaks; favor certain gains.
+- Character and weapon pity are independent; keep separate ledgers.
 
-## 适用场景
+## Use Cases
 
-- 有限抽数下做抽卡规划、判断某个限定角色或武器抽不抽。
-- 比较多套抽取方案、评估保底状态与目标达成成功率。
-- 规划跨版本资源分配，或处理免费自选、全收集、复刻等待等决策。
+- Plan pulls under limited resources; decide whether to pull a limited character or weapon.
+- Compare strategies; assess pity state and goal-completion probability.
+- Plan cross-version resource allocation, or handle free picks, full collection, and rerun waits.
 
-## 许可证
+## License
 
 [MIT](LICENSE)
