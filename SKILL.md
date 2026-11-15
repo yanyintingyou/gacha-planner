@@ -39,6 +39,7 @@ description: "抽卡类游戏（米哈游系限定角色池/武器池）的资�
 - 梳理卡池时间线：每个目标的上线版本、上半/下半、卡池起止时点、可能的复刻窗口。
 - 按信息可信度分级：官方前瞻直播、官方公告、官方角色预告、游戏内详情为最终依据；测试服解包、舅舅党文字爆料标注“未官宣”及来源可靠度。
 - 概率、保底、期望等固定规则与每版本资源产出，查 `references/`，不凭记忆编造。
+- 角色倍率、命座、武器精炼、套装效果的数值与文本从 Gachabase 取，取值方法与可用字段见 `references/data-sources.md`，脚本为 `scripts/gachabase.py`。release 分支的数据可当事实引用，beta 分支标注“测试服”。
 - 信息渠道与可信度判断见 `references/gacha-mechanics.md`。
 - 非抽卡获取渠道（自选名单、复刻窗口、集录祈愿/定制调频）的核实方法见 `references/acquisition-methods.md`。
 
@@ -96,7 +97,9 @@ description: "抽卡类游戏（米哈游系限定角色池/武器池）的资�
 ## 资源与工具
 
 - `references/gacha-mechanics.md`：各游戏限定角色池、武器池的固定概率、保底机制、期望与分位，以及信息渠道分级。
+- `references/data-sources.md`：Gachabase 的分支与可信度归属、URL 结构、六类页面各能取到什么、常见误读。
 - `references/patch-income.md`：零氪与月卡玩家每版本抽数产出口径，以及全收集模式的长期收支。
 - `references/acquisition-methods.md`：免费自选（砺行修远、周年庆常驻/限定自选）的决策规则与复刻等待量化。
 - `references/weapon-allocation.md`：武器匹配度、是否值得抽、存量与免费替代、有限武器的角色间分配。
 - `scripts/pull_probability.py`：解析法（单目标与同池多金分布、期望分位、成功率）、蒙特卡洛（稳态与条件口径、捕获明光）、氪金填充（`top_up_plan`）、全收集缺口（`collection_gap`）。
+- `scripts/gachabase.py`：拉取角色、武器、套装列表与单条目详情，输出 ID、slug 与名字。

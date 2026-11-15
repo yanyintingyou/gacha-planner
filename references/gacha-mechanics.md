@@ -98,6 +98,7 @@
 
 - 米游社攻略区、B 站攻略：配队、机制、抽数实测。
 - 数据站：GachaHaven、gachatracker（复刻预测）、Timesaver（保底机制）、zzz-poly-cal、chjiya 攻略站。
+- Gachabase：解包数据库，角色、武器、套装的数值与文本齐全，按 release / beta 分支分开存放。release 分支可当事实，beta 分支属第三层。取值方法见 `data-sources.md`。
 - NGA 等论坛：部分板块明确禁止转载未证实爆料，引用时注意。
 
 **第三层：爆料与泄露（仅预规划）**

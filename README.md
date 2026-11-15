@@ -9,6 +9,7 @@ An agent skill for resource planning and pull decisions in gacha games (miHoYo l
 - **Complete decision pipeline**: collect inputs → verify game info → build resource timeline → probability and risk analysis → compare plans → output actionable decisions.
 - **Accurate probability modeling**: analytical and Monte Carlo methods covering soft pity, the guaranteed-pity system, multiple copies in one banner, and the stateful "Captured Radiance" mechanism in Genshin Impact.
 - **Dual-perspective decisions**: hard pity gives the safety boundary; the statistical perspective (expected value, P50/P90/P95) gives the realistic outlook.
+- **Data source built in**: Gachabase datamined data through its release / beta branches — character multipliers, constellations, weapon refinements, artifact set effects, with a command-line reader.
 - **Non-pull acquisition**: decision rules for the persistent cultivation system and anniversary standard / limited five-star picks.
 - **Weapon inventory and substitutes**: weapon-character fit analysis, free substitutes first, and allocation of limited weapons across characters.
 - **Full-collection feasibility**: long-term income-vs-cost balance, per-patch and cumulative gaps.
@@ -23,11 +24,13 @@ gacha-planner/
 ├── SKILL.md                      # Core methodology and workflow
 ├── references/
 │   ├── gacha-mechanics.md        # Fixed banner probabilities, pity, expectations, sources
+│   ├── data-sources.md           # Gachabase data source, URL structure, retrieval
 │   ├── patch-income.md           # Per-patch income and full-collection long-term balance
 │   ├── acquisition-methods.md    # Free pick decisions and rerun waiting
 │   └── weapon-allocation.md      # Weapon fit, substitutes, allocation
 └── scripts/
-    └── pull_probability.py       # Probability, Monte Carlo, top-up, collection gap
+    ├── pull_probability.py       # Probability, Monte Carlo, top-up, collection gap
+    └── gachabase.py              # Character, weapon and set listings plus details
 ```
 
 ## Workflow
