@@ -56,6 +56,10 @@ gacha-planner/
 - Compare strategies; assess pity state and goal-completion probability.
 - Plan cross-version resource allocation, or handle free picks, full collection, and rerun waits.
 
+## Acknowledgments
+
+We pull character, weapon, and artifact data from [Gachabase](https://gachabase.net/). Community maintainers datamine the game and publish revisions through each test cycle. Thanks to them for the data and the steady updates.
+
 ## License
 
 [MIT](LICENSE)
